@@ -1,0 +1,224 @@
+body {
+  background: black;
+  font-family: 'Courier New', Courier, monospace;
+  color: white;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.container {
+  opacity: 1; 
+  transition: none;
+}
+
+.isi {
+  font-size: 1.5em;
+  margin: 60px 0; /* Reduce the vertical margin to move it higher */
+  text-align: center;
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center children horizontally */
+  gap: 0.5em; /* Add spacing between h1 and h2 */
+}
+
+h1, h2 {
+  display: block; /* Ensure they stack on top of each other */
+  margin: 0; /* Remove default margins */
+  text-align: center; /* Center the text */
+}
+
+h1 {
+  position: relative;
+  font-size: 3em;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: 0; /* Ensure no extra spacing below h1 */
+  text-align: center;
+  background-color: #300a24;
+  display: inline-block;
+  padding: 0.5em;
+  color: white;
+  user-select: none;
+  cursor: pointer;
+}
+
+h1:hover {
+  text-shadow: 0px -5px #ec2225, 0px 5px #00c2cb, -5px 0px #ec2225, 5px 0px #00c2cb;
+}
+
+h1::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+  font: inherit;
+  line-height: inherit;
+  color: #e0ffff;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.1s linear;
+}
+
+h1:hover::before {
+  opacity: 1;
+  animation: animate 12ms ease-in-out infinite;
+  z-index: 1;
+  transition: none;
+}
+
+@keyframes animate {
+  0%, 100% {
+    transform: translate(0, -7px); 
+    opacity: 1;
+  }
+  20% {
+    transform: translate(-10px, 0);
+    opacity: 0.7;
+  }
+  40% {
+    transform: translate(0, 7px);
+    opacity: 0.2;
+  }
+  60% {
+    transform: translate(10px, 0);
+    opacity: 0.3;
+  }
+  80% {
+    transform: translate(0, 0);
+    opacity: 0.9;
+  }
+}
+
+h2 {
+  color: black;
+  font-size: 1.5em;
+  padding-top: 1em;
+  margin-top: 0; /* Ensure no extra spacing above h2 */
+  text-align: center;
+  background-color: #ffffff;
+  display: inline-block;
+  padding: 0.5em;
+}
+
+.experience {
+  margin: 50px auto;
+  height: auto;
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  .text-container {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-start; 
+    width: 100%; 
+    gap: 20px; 
+    padding: 0 20px;
+
+    .text-experience {
+      flex: 1; 
+      text-align: left; 
+      padding: 10px; 
+      background-color: #1a1a1a; 
+      border-radius: 5px;
+    }
+
+    .text-abilities {
+      font-size: .85em;
+      flex: 1; 
+      text-align: left; 
+      padding: 10px; 
+      background-color: #1a1a1a; 
+      border-radius: 5px;
+    }
+  }
+
+  h3 {
+    margin: 20px 0;
+    margin-bottom: 10px;
+    text-align: left; 
+    color: white; 
+  }
+
+  .images-container {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 20px; 
+  }
+
+  img {
+    width: 6%;
+    height: auto;
+    filter: grayscale(100%) brightness(0.8) sepia(1) hue-rotate(-50deg) saturate(5);
+    transition: transform 0.3s ease, filter 0.3s ease;
+    margin: 0 10px;
+
+    &:hover {
+      transform: scale(1.1);
+      filter: grayscale(0%) brightness(1) sepia(1) hue-rotate(-50deg) saturate(5);
+    }
+  }
+}
+
+.top-right-icons {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  display: flex;
+  gap: 15px; 
+
+  .icon {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    filter: grayscale(100%) brightness(0.8) sepia(1) hue-rotate(-50deg) saturate(5);
+    transition: transform 0.3s ease, filter 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+      filter: grayscale(0%) brightness(1) sepia(1) hue-rotate(-50deg) saturate(5);
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+
+    &::after {
+      content: attr(title); 
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #1a1a1a;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 0.8em;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    &:hover::after {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
