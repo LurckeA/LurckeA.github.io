@@ -16,7 +16,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
   overflow-x: hidden;
   width: 100%;
 }
@@ -213,103 +212,63 @@ h2 {
       display: block;
     }
 
-    &::after {
-      content: attr(title);
+    .tooltip-text {
       position: absolute;
-      bottom: -30px;
+      bottom: -35px;
       left: 50%;
       transform: translateX(-50%);
       background-color: #1a1a1a;
       color: white;
-      padding: 5px 8px;
-      border-radius: 4px;
-      font-size: 0.75em;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 0.8em;
       white-space: nowrap;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
       z-index: 11;
-      pointer-events: none;
-    }
-
-    @media (hover: hover) and (pointer: fine) {
-      &:hover::after {
-          opacity: 1;
-          visibility: visible;
-      }
     }
   }
 }
 
 @media (max-width: 768px) {
-  .container {
-      padding: 15px;
+  body {
+     min-height: 100vh;
   }
 
-  .isi {
-      font-size: 1.3em;
-      margin: 20px 0;
-      gap: 0.4em;
-  }
-
+  .container { padding: 15px; }
+  .isi { font-size: 1.3em; margin: 20px 0; gap: 0.4em; }
   h1 { font-size: 2.2em; padding: 0.4em; }
   h1::before { padding: 0.4em; }
   h2 { font-size: 1.2em; padding: 0.4em; }
 
   .experience {
-      gap: 25px;
-      margin: 25px 0;
-
-      h3 { font-size: 1.1em; text-align: center; }
-
-      .images-container {
-         gap: 15px;
-         justify-content: center;
-
-         img {
-             width: 48px;
-             height: 48px;
-         }
-      }
-
-      .text-container {
-          flex-direction: column;
-          gap: 15px;
-          align-items: center;
-          width: 100%;
-      }
-
-      .text-experience,
-      .text-abilities {
-          flex: none;
-          width: 100%;
-          text-align: left;
-          padding: 12px;
-      }
-
-      .text-abilities {
-         font-size: 0.9em;
-      }
+    gap: 25px; margin: 25px 0;
+    h3 { font-size: 1.1em; text-align: center; }
+    .images-container { gap: 15px; justify-content: center; img { width: 48px; height: 48px; } }
+    .text-container { flex-direction: column; gap: 15px; align-items: center; width: 100%; }
+    .text-experience, .text-abilities { flex: none; width: 100%; text-align: left; padding: 12px; }
+    .text-abilities { font-size: 0.9em; }
   }
 
   .top-right-icons {
-      position: static;
-      order: 2;
-      width: 100%;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 30px;
-      margin-bottom: 20px;
-      padding: 10px 0;
+    position: static;
+    order: 2;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding: 10px 0;
 
-      .icon {
-          width: 26px;
-          height: 26px;
+    .icon {
+      width: 26px;
+      height: 26px;
 
-          &::after {
-              display: none;
-          }
+      .tooltip-text {
+         bottom: -30px;
+         font-size: 0.75em;
+         padding: 4px 8px;
       }
+    }
   }
 }
 
@@ -318,22 +277,18 @@ h2 {
     h1 { font-size: 1.8em; }
     h2 { font-size: 1.1em; }
 
-     .experience {
-        .images-container img {
-             width: 42px;
-             height: 42px;
-         }
-         .text-abilities { font-size: 0.85em; }
-     }
+    .experience {
+        .images-container img { width: 42px; height: 42px; }
+        .text-abilities { font-size: 0.85em; }
+    }
 
     .top-right-icons {
-      gap: 12px;
-      margin-top: 25px;
-      margin-bottom: 15px;
-
-       .icon {
-           width: 24px;
-           height: 24px;
-       }
+      gap: 12px; margin-top: 25px; margin-bottom: 15px;
+      .icon {
+        width: 24px; height: 24px;
+         .tooltip-text {
+             bottom: -28px;
+         }
+      }
     }
 }
