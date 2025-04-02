@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import './main.scss';
 
 export default function App() {
@@ -15,18 +16,48 @@ export default function App() {
     'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/UbuntuCoF.svg/1024px-UbuntuCoF.svg.png',
   ];
 
+  const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
+
+  const socialIcons = [
+    {
+      title: "ariaprks@gmail.com",
+      src: "https://img.icons8.com/ios-filled/50/F25081/email.png",
+      alt: "Email",
+      className: "email-icon"
+    },
+    {
+      title: "ariaforehead",
+      src: "https://img.icons8.com/ios-filled/50/F25081/discord-logo.png",
+      alt: "Discord",
+      className: "discord-icon"
+    },
+    {
+      title: "@aria.anim",
+      src: "https://img.icons8.com/ios-filled/50/F25081/instagram-new.png",
+      alt: "Instagram",
+      className: "instagram-icon"
+    },
+  ];
+
+  const handleIconClick = (title: string) => {
+    setActiveTooltip(prev => (prev === title ? null : title));
+  };
+
   return (
     <div className="container">
       <div className="top-right-icons">
-        <div className="icon email-icon" title="ariaprks@gmail.com">
-          <img src="https://img.icons8.com/ios-filled/50/F25081/email.png" alt="Email" />
-        </div>
-        <div className="icon discord-icon" title="ariaforehead">
-          <img src="https://img.icons8.com/ios-filled/50/F25081/discord-logo.png" alt="Discord" />
-        </div>
-        <div className="icon instagram-icon" title="@aria.anim">
-          <img src="https://img.icons8.com/ios-filled/50/F25081/instagram-new.png" alt="Instagram" />
-        </div>
+        {socialIcons.map((icon) => (
+          <div
+            key={icon.title}
+            className={`icon ${icon.className}`}
+            onClick={() => handleIconClick(icon.title)}
+          >
+            <img src={icon.src} alt={icon.alt} />
+            {activeTooltip === icon.title && (
+              <span className="tooltip-text">{icon.title}</span>
+            )}
+          </div>
+        ))}
       </div>
       <div className="isi">
         <h1 className="main-header" data-text='Arialize'>Arialize</h1>
@@ -35,7 +66,7 @@ export default function App() {
           <h3>Codes</h3>
           <div className="images-container">
             {codeImages.map((src, index) => (
-              <img key={index} src={src} />
+              <img key={index} src={src} alt={`Code language icon ${index + 1}`} />
             ))}
           </div>
           <div className="text-container">
