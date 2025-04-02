@@ -125,24 +125,25 @@ h2 {
   gap: 30px;
 
   h3 {
-    margin: 15px 0 10px 0;
+    margin: 0px 0 10px 0;
     text-align: center;
     color: white;
     width: 100%;
   }
 
   .images-container {
+    margin-top: -5px;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
     flex-wrap: wrap;
     padding: 0 10px;
     width: 100%;
 
     img {
-      width: 45px;
-      height: 45px;
+      width: 70px;
+      height: 70px;
       object-fit: contain;
       filter: grayscale(100%) brightness(0.8) sepia(1) hue-rotate(-50deg) saturate(5);
       transition: transform 0.3s ease, filter 0.3s ease;
@@ -225,6 +226,7 @@ h2 {
       visibility: hidden;
       transition: opacity 0.3s ease, visibility 0.3s ease;
       z-index: 11;
+      pointer-events: none;
     }
 
     @media (hover: hover) and (pointer: fine) {
@@ -241,42 +243,29 @@ h2 {
       padding: 15px;
   }
 
-   .isi {
+  .isi {
       font-size: 1.3em;
       margin: 20px 0;
       gap: 0.4em;
   }
 
-  h1 {
-      font-size: 2.2em;
-      padding: 0.4em;
-  }
-
-   h1::before {
-       padding: 0.4em;
-   }
-
-  h2 {
-      font-size: 1.2em;
-      padding: 0.4em;
-  }
+  h1 { font-size: 2.2em; padding: 0.4em; }
+  h1::before { padding: 0.4em; }
+  h2 { font-size: 1.2em; padding: 0.4em; }
 
   .experience {
       gap: 25px;
       margin: 25px 0;
 
-      h3 {
-        font-size: 1.1em;
-        text-align: center;
-      }
+      h3 { font-size: 1.1em; text-align: center; }
 
       .images-container {
-         gap: 10px;
+         gap: 15px;
          justify-content: center;
 
          img {
-             width: 40px;
-             height: 40px;
+             width: 48px;
+             height: 48px;
          }
       }
 
@@ -304,7 +293,6 @@ h2 {
       top: 10px;
       right: 10px;
       gap: 8px;
-
       .icon {
           width: 30px;
           height: 30px;
@@ -313,26 +301,16 @@ h2 {
 }
 
 @media (max-width: 480px) {
-    .container {
-        padding: 10px;
-    }
-
-    h1 {
-        font-size: 1.8em;
-    }
-
-    h2 {
-        font-size: 1.1em;
-    }
+    .container { padding: 10px; }
+    h1 { font-size: 1.8em; }
+    h2 { font-size: 1.1em; }
 
      .experience {
         .images-container img {
-             width: 35px;
-             height: 35px;
+             width: 42px;
+             height: 42px;
          }
-         .text-abilities {
-             font-size: 0.85em;
-         }
+         .text-abilities { font-size: 0.85em; }
      }
 
     .top-right-icons {
