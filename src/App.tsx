@@ -89,6 +89,7 @@ export default function App() {
                 <li>3D Rigging</li>
                 <li>Programming</li>
                 <li>Web Development</li>
+                <li>Front-end</li>
                 <li>Teamwork</li>
                 <li>Leadership</li>
                 <li>Communication</li>
