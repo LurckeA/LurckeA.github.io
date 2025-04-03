@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './main.scss';
 
 export default function App() {
-  // --- Data for Code Icons (with name for data-tooltip) ---
+  // --- Data for Code Icons ---
   const codeTools = [
     { name: "Visual Studio Code", src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/512px-Visual_Studio_Code_1.35_icon.svg.png?20210804221519', alt: 'Visual Studio Code Logo'},
     { name: "HTML", src: 'https://icons.iconarchive.com/icons/cornmanthe3rd/plex/512/Other-html-5-icon.png', alt: 'HTML5 Logo'},
@@ -17,37 +17,40 @@ export default function App() {
     { name: "Ubuntu", src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/UbuntuCoF.svg/1024px-UbuntuCoF.svg.png', alt: 'Ubuntu Logo'},
   ];
 
-  // --- State ONLY for Social Icon Tooltips (Click-to-show) ---
+  // --- State Management ---
   const [activeSocialTooltip, setActiveSocialTooltip] = useState<string | null>(null);
-  // NO state needed for code image hover tooltips
+  const [activeCodeTooltip, setActiveCodeTooltip] = useState<string | null>(null);
 
-  // --- Data Structure for Social Icons ---
+  // --- Data for Social Icons ---
   const socialIcons = [
     { title: "ariaprks@gmail.com", src: "https://img.icons8.com/ios-filled/50/F25081/email.png", alt: "Email", className: "email-icon" },
     { title: "@aria.anim", src: "https://img.icons8.com/ios-filled/50/F25081/instagram-new.png", alt: "Instagram", className: "instagram-icon" },
     { title: "ariaforehead", src: "https://img.icons8.com/ios-filled/50/F25081/discord-logo.png", alt: "Discord", className: "discord-icon" },
   ];
 
-  // --- Tooltip Toggle Function ONLY for Social Icons ---
+  // --- Click Handlers ---
   const handleSocialIconClick = (title: string) => {
     setActiveSocialTooltip(prev => (prev === title ? null : title));
+    setActiveCodeTooltip(null); // Close other tooltips
   };
 
-  // NO click handler needed for code image hover tooltips
+  const handleCodeIconClick = (name: string) => {
+    setActiveCodeTooltip(prev => (prev === name ? null : name));
+    setActiveSocialTooltip(null); // Close other tooltips
+  };
 
   // --- Component JSX ---
   return (
     <div className="container">
-      {/* Social Icons Area (Click Tooltips) */}
+      {/* Social Icons Area */}
       <div className="top-right-icons">
         {socialIcons.map((icon) => (
           <div
             key={icon.title}
             className={`icon ${icon.className}`}
-            onClick={() => handleSocialIconClick(icon.title)} // Keep click handler here
+            onClick={() => handleSocialIconClick(icon.title)}
           >
             <img src={icon.src} alt={icon.alt} />
-            {/* Conditional rendering for social tooltip */}
             {activeSocialTooltip === icon.title && (
               <span className="tooltip-text social-tooltip">{icon.title}</span>
             )}
@@ -62,23 +65,25 @@ export default function App() {
 
         <div className="experience">
           <h3>Codes</h3>
-          {/* Code Icons (Hover Tooltips) */}
+          {/* Code Icons (Click Tooltips) */}
           <div className="images-container">
             {codeTools.map((tool) => (
-              // Wrapper still useful for positioning the CSS tooltip
               <div
                 key={tool.name}
                 className="code-image-wrapper"
-                data-tooltip={tool.name} // <<< Add data attribute for CSS to read
-                // NO onClick handler here
+                onClick={() => handleCodeIconClick(tool.name)}
               >
                 <img src={tool.src} alt={tool.alt} />
-                {/* NO conditional span tooltip here */}
+                {/* Conditionally render the tooltip span */}
+                {activeCodeTooltip === tool.name && (
+                  // Render tool name directly (no line break logic)
+                  <span className="tooltip-text code-tooltip">{tool.name}</span>
+                )}
               </div>
             ))}
           </div>
 
-          {/* Text Sections (Experience & Abilities) */}
+          {/* Text Sections */}
           <div className="text-container">
             <div className="text-experience">
               <h3>Experiences</h3>
