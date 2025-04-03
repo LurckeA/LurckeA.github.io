@@ -4,21 +4,20 @@
  * =============================================================================
  */
 
- html {
+html {
   width: 100%;
   overflow-x: hidden;
   box-sizing: border-box;
-  // --mouse-x, --mouse-y REMOVED
 }
 *, *:before, *:after {
   box-sizing: inherit;
 }
 
-// --- >>> NEW: Keyframes for Animated Gradient <<< ---
+// --- Keyframes for Animated Gradient ---
 @keyframes moving-gradient {
-  0% { background-position: 0% 50%; } // Start position
-  50% { background-position: 100% 50%; } // Mid position
-  100% { background-position: 0% 50%; } // End position (loops back)
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 body {
@@ -29,24 +28,22 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: hidden; // Still good to prevent edge artifacts
+  overflow: hidden;
   width: 100%;
   min-height: 100vh;
 
-  // --- >>> NEW: Animated Gradient Background <<< ---
-  background-color: black; // Fallback color
-  // Define a multi-color, slightly angled gradient
+  // --- Animated Gradient Background ---
+  background-color: black;
   background-image: linear-gradient(
-    -45deg, // Angle of the gradient
-    rgba(40, 10, 35, 0.8),    // Dark Purple
-    rgba(15, 25, 50, 0.7),    // Dark Blue
-    rgba(10, 40, 40, 0.6),    // Dark Teal/Cyan
-    rgba(15, 25, 50, 0.7),    // Dark Blue
-    rgba(40, 10, 35, 0.8)     // Dark Purple
+    -45deg,
+    rgba(40, 10, 35, 0.8),
+    rgba(15, 25, 50, 0.7),
+    rgba(10, 40, 40, 0.6),
+    rgba(15, 25, 50, 0.7),
+    rgba(40, 10, 35, 0.8)
   );
-  background-size: 400% 400%; // Make the gradient much larger than the viewport
-  animation: moving-gradient 20s linear infinite; // Apply the animation
-  // --- >>> End of Animated Background <<< ---
+  background-size: 400% 400%;
+  animation: moving-gradient 20s linear infinite;
 }
 
 .container {
@@ -59,9 +56,9 @@ body {
   flex-direction: column;
   align-items: center;
   flex-grow: 1;
-  position: relative; // Keep content above background
+  position: relative;
   z-index: 1;
-  background: none; // Ensure container is transparent
+  background: none;
 }
 
 /**
@@ -69,9 +66,6 @@ body {
  * Main Content Styles (.isi wrapper and children)
  * =============================================================================
  */
-
- // ... (Rest of the SCSS remains exactly the same as your last version) ...
- // No changes needed for .isi, h1, h2, .experience, .top-right-icons, tooltips, media queries etc.
 
 .isi {
   font-size: 1.5em;
@@ -131,14 +125,23 @@ h1 {
 
   &:hover::before {
     opacity: 1;
-    animation: animate 12ms ease-in-out infinite;
+    // Apply the 'animate' animation defined below
+    animation: animate 12ms ease-in-out infinite; // <<< This rule needs the @keyframes
     z-index: 1;
     transition: none;
   }
 }
 
-/* Keyframes for h1 hover animation */
-// @keyframes animate { ... } // Keep this as it was
+// --- >>> ADD THIS BLOCK BACK IN <<< ---
+/* Keyframes for the h1 hover glitch animation */
+@keyframes animate {
+  0%, 100% { transform: translate(0, -7px); opacity: 1; }
+  20% { transform: translate(-10px, 0); opacity: 0.7; }
+  40% { transform: translate(0, 7px); opacity: 0.2; }
+  60% { transform: translate(10px, 0); opacity: 0.3; }
+  80% { transform: translate(0, 0); opacity: 0.9; }
+}
+// --- >>> END OF BLOCK TO ADD BACK <<< ---
 
 h2 {
   color: black;
@@ -182,12 +185,12 @@ h2 {
 
     /* Wrapper for each code image + JS click tooltip */
     .code-image-wrapper {
-      position: relative; /* Needed for positioning the tooltip span */
+      position: relative;
       display: inline-flex;
-      cursor: pointer; /* Indicate clickable */
+      cursor: pointer;
 
       img {
-        width: 70px; /* Icon size (Desktop) */
+        width: 70px;
         height: 70px;
         object-fit: contain;
         filter: grayscale(100%) brightness(0.8) sepia(1) hue-rotate(-50deg) saturate(5);
@@ -203,15 +206,15 @@ h2 {
       /* Styling for the JS Code Tooltip */
       .tooltip-text.code-tooltip {
         position: absolute;
-        bottom: -25px; /* Position below the wrapper */
+        bottom: -25px;
         left: 50%;
         transform: translateX(-50%);
         background-color: #1a1a1a;
         color: white;
         padding: 4px 8px;
         border-radius: 4px;
-        font-size: 0.75em; /* Base font size for code tooltip */
-        white-space: nowrap; /* Keep text on one line */
+        font-size: 0.75em;
+        white-space: nowrap;
         z-index: 5;
       }
     }
@@ -294,7 +297,7 @@ h2 {
       padding: 5px 10px;
       border-radius: 5px;
       font-size: 0.8em;
-      white-space: nowrap; /* Social links likely don't need wrapping */
+      white-space: nowrap;
       z-index: 11;
     }
   }
@@ -306,7 +309,7 @@ h2 {
  * =============================================================================
  */
 @media (max-width: 768px) {
-  // body min-height is already set in base styles now
+  // body min-height is inherited
 
   .container {
       padding: 15px;
@@ -369,7 +372,7 @@ h2 {
             width: 48px;
             height: 48px;
          }
-         /* --- Adjust code tooltip position/size for mobile --- */
+         /* Adjust code tooltip position/size for mobile */
          .tooltip-text.code-tooltip {
             bottom: -22px;
             font-size: 0.65em; /* Adjust font size */
