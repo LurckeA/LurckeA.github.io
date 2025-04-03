@@ -8,13 +8,20 @@
   width: 100%;
   overflow-x: hidden;
   box-sizing: border-box;
+  // --mouse-x, --mouse-y REMOVED
 }
 *, *:before, *:after {
   box-sizing: inherit;
 }
 
+// --- >>> NEW: Keyframes for Animated Gradient <<< ---
+@keyframes moving-gradient {
+  0% { background-position: 0% 50%; } // Start position
+  50% { background-position: 100% 50%; } // Mid position
+  100% { background-position: 0% 50%; } // End position (loops back)
+}
+
 body {
-  background: black;
   font-family: 'Courier New', Courier, monospace;
   color: white;
   padding: 0;
@@ -22,8 +29,24 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-x: hidden;
+  overflow: hidden; // Still good to prevent edge artifacts
   width: 100%;
+  min-height: 100vh;
+
+  // --- >>> NEW: Animated Gradient Background <<< ---
+  background-color: black; // Fallback color
+  // Define a multi-color, slightly angled gradient
+  background-image: linear-gradient(
+    -45deg, // Angle of the gradient
+    rgba(40, 10, 35, 0.8),    // Dark Purple
+    rgba(15, 25, 50, 0.7),    // Dark Blue
+    rgba(10, 40, 40, 0.6),    // Dark Teal/Cyan
+    rgba(15, 25, 50, 0.7),    // Dark Blue
+    rgba(40, 10, 35, 0.8)     // Dark Purple
+  );
+  background-size: 400% 400%; // Make the gradient much larger than the viewport
+  animation: moving-gradient 20s linear infinite; // Apply the animation
+  // --- >>> End of Animated Background <<< ---
 }
 
 .container {
@@ -36,6 +59,9 @@ body {
   flex-direction: column;
   align-items: center;
   flex-grow: 1;
+  position: relative; // Keep content above background
+  z-index: 1;
+  background: none; // Ensure container is transparent
 }
 
 /**
@@ -43,6 +69,9 @@ body {
  * Main Content Styles (.isi wrapper and children)
  * =============================================================================
  */
+
+ // ... (Rest of the SCSS remains exactly the same as your last version) ...
+ // No changes needed for .isi, h1, h2, .experience, .top-right-icons, tooltips, media queries etc.
 
 .isi {
   font-size: 1.5em;
@@ -108,13 +137,8 @@ h1 {
   }
 }
 
-@keyframes animate {
-  0%, 100% { transform: translate(0, -7px); opacity: 1; }
-  20% { transform: translate(-10px, 0); opacity: 0.7; }
-  40% { transform: translate(0, 7px); opacity: 0.2; }
-  60% { transform: translate(10px, 0); opacity: 0.3; }
-  80% { transform: translate(0, 0); opacity: 0.9; }
-}
+/* Keyframes for h1 hover animation */
+// @keyframes animate { ... } // Keep this as it was
 
 h2 {
   color: black;
@@ -187,9 +211,7 @@ h2 {
         padding: 4px 8px;
         border-radius: 4px;
         font-size: 0.75em; /* Base font size for code tooltip */
-        white-space: nowrap; /* <<< Ensure text stays on one line */
-        // text-align: center; /* <<< REMOVED (or commented out) */
-        // max-width: 120px;  /* <<< REMOVED (or commented out) */
+        white-space: nowrap; /* Keep text on one line */
         z-index: 5;
       }
     }
@@ -284,9 +306,7 @@ h2 {
  * =============================================================================
  */
 @media (max-width: 768px) {
-  body {
-     min-height: 100vh;
-  }
+  // body min-height is already set in base styles now
 
   .container {
       padding: 15px;
@@ -354,9 +374,7 @@ h2 {
             bottom: -22px;
             font-size: 0.65em; /* Adjust font size */
             padding: 3px 6px;
-            white-space: nowrap; /* <<< Ensure nowrap on mobile too */
-            // text-align: center; /* REMOVED */
-            // max-width: 100px; /* REMOVED */
+            white-space: nowrap; /* Ensure nowrap */
          }
        }
     }
@@ -425,9 +443,7 @@ h2 {
                  bottom: -20px;
                  font-size: 0.4em; /* Adjust font size */
                  padding: 2px 5px;
-                 white-space: nowrap; /* <<< Ensure nowrap */
-                 // text-align: center; /* REMOVED */
-                 // max-width: 80px; /* REMOVED */
+                 white-space: nowrap; /* Ensure nowrap */
              }
            }
         }

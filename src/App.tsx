@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState /*, useEffect removed */ } from 'react'; // Remove useEffect import
 import './main.scss';
 
 export default function App() {
@@ -31,13 +31,15 @@ export default function App() {
   // --- Click Handlers ---
   const handleSocialIconClick = (title: string) => {
     setActiveSocialTooltip(prev => (prev === title ? null : title));
-    setActiveCodeTooltip(null); // Close other tooltips
+    setActiveCodeTooltip(null);
   };
 
   const handleCodeIconClick = (name: string) => {
     setActiveCodeTooltip(prev => (prev === name ? null : name));
-    setActiveSocialTooltip(null); // Close other tooltips
+    setActiveSocialTooltip(null);
   };
+
+  // --- REMOVED useEffect for mouse move ---
 
   // --- Component JSX ---
   return (
@@ -74,9 +76,7 @@ export default function App() {
                 onClick={() => handleCodeIconClick(tool.name)}
               >
                 <img src={tool.src} alt={tool.alt} />
-                {/* Conditionally render the tooltip span */}
                 {activeCodeTooltip === tool.name && (
-                  // Render tool name directly (no line break logic)
                   <span className="tooltip-text code-tooltip">{tool.name}</span>
                 )}
               </div>
@@ -85,6 +85,7 @@ export default function App() {
 
           {/* Text Sections */}
           <div className="text-container">
+            {/* ... Experience List ... */}
             <div className="text-experience">
               <h3>Experiences</h3>
               <ul>
@@ -96,6 +97,7 @@ export default function App() {
                 <li>1 year as student council member</li>
               </ul>
             </div>
+            {/* ... Abilities List ... */}
             <div className="text-abilities">
               <h3>Abilities</h3>
               <ul>
