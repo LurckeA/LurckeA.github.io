@@ -6,37 +6,36 @@
 
  html {
   width: 100%;
-  overflow-x: hidden; /* Prevent horizontal scroll globally */
-  box-sizing: border-box; /* Modern box model */
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 *, *:before, *:after {
-  box-sizing: inherit; /* Ensure all elements use the border-box model */
+  box-sizing: inherit;
 }
 
 body {
   background: black;
-  font-family: 'Courier New', Courier, monospace; /* Base font */
+  font-family: 'Courier New', Courier, monospace;
   color: white;
   padding: 0;
   margin: 0;
-  display: flex; /* Use flexbox for main layout */
-  flex-direction: column; /* Stack container vertically */
-  align-items: center; /* Center container horizontally */
-  overflow-x: hidden; /* Reiterate prevent horizontal scroll */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
   width: 100%;
-  /* min-height: 100vh removed for desktop to prevent unnecessary scroll */
 }
 
 .container {
   opacity: 1;
-  transition: none; /* No fade-in transition needed */
-  width: 100%; /* Full width within viewport */
-  max-width: 1200px; /* Maximum content width for large screens */
-  padding: 20px; /* Base padding around content */
-  display: flex; /* Use flexbox to manage direct children (.isi, .top-right-icons) */
-  flex-direction: column; /* Stack children vertically */
-  align-items: center; /* Center children horizontally */
-  flex-grow: 1; /* Allow container to grow if body has min-height (on mobile) */
+  transition: none;
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
 }
 
 /**
@@ -46,15 +45,15 @@ body {
  */
 
 .isi {
-  font-size: 1.5em; /* Base font size for the main content area */
-  margin: 30px 0; /* Vertical spacing for the main content block (Desktop) */
+  font-size: 1.5em;
+  margin: 30px 0;
   text-align: center;
-  display: flex; /* Use flexbox for children (h1, h2, .experience) */
-  flex-direction: column; /* Stack children vertically */
-  align-items: center; /* Center children horizontally */
-  gap: 0.5em; /* Space between direct children (h1, h2) */
-  width: 100%; /* Take full width within the container */
-  order: 0; /* Default order in the container's flex layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5em;
+  width: 100%;
+  order: 0;
 }
 
 /* Headings */
@@ -62,57 +61,53 @@ h1, h2 {
   display: block;
   margin: 0;
   text-align: center;
-  width: auto; /* Width based on content + padding */
-  max-width: 100%; /* Prevent overflow on small containers */
+  width: auto;
+  max-width: 100%;
 }
 
 h1 {
-  position: relative; /* Needed for ::before pseudo-element positioning */
-  font-size: 3em; /* Large main heading */
+  position: relative;
+  font-size: 3em;
   font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
-  margin-bottom: 0; /* Use gap in parent (.isi) for spacing */
-  background-color: #300a24; /* Background color */
-  display: inline-block; /* Shrink background to content width */
+  margin-bottom: 0;
+  background-color: #300a24;
+  display: inline-block;
   padding: 0.5em;
   color: white;
-  user-select: none; /* Prevent text selection */
+  user-select: none;
   cursor: pointer;
   line-height: 1.2;
 
-  /* Glitch effect on hover */
   &:hover {
     text-shadow: 0px -5px #ec2225, 0px 5px #00c2cb, -5px 0px #ec2225, 5px 0px #00c2cb;
   }
 
-  /* Pseudo-element for hover animation text */
   &::before {
-    content: attr(data-text); /* Get text from data-text attribute */
+    content: attr(data-text);
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    padding: 0.5em; /* Match parent padding */
+    padding: 0.5em;
     text-align: center;
-    font: inherit; /* Use parent font styles */
-    line-height: 1.2; /* Match parent line-height */
-    color: #e0ffff; /* Color for the animated text */
-    opacity: 0; /* Hidden by default */
-    pointer-events: none; /* Doesn't interfere with clicks */
-    transition: opacity 0.1s linear; /* Fade in transition (overridden on hover) */
+    font: inherit;
+    line-height: 1.2;
+    color: #e0ffff;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.1s linear;
   }
 
-  /* Show and animate ::before on hover */
   &:hover::before {
     opacity: 1;
-    animation: animate 12ms ease-in-out infinite; /* Apply keyframe animation */
-    z-index: 1; /* Ensure it's above the base text */
-    transition: none; /* Remove fade transition during animation */
+    animation: animate 12ms ease-in-out infinite;
+    z-index: 1;
+    transition: none;
   }
 }
 
-/* Keyframes for the h1 hover glitch animation */
 @keyframes animate {
   0%, 100% { transform: translate(0, -7px); opacity: 1; }
   20% { transform: translate(-10px, 0); opacity: 0.7; }
@@ -122,31 +117,30 @@ h1 {
 }
 
 h2 {
-  color: black; /* Text color */
-  font-size: 1.5em; /* Sub-heading size */
-  margin-top: 0.5em; /* Space above h2 (from h1) */
+  color: black;
+  font-size: 1.5em;
+  margin-top: 0.5em;
   text-align: center;
-  background-color: #ffffff; /* Background color */
-  display: inline-block; /* Shrink background to content width */
+  background-color: #ffffff;
+  display: inline-block;
   padding: 0.5em;
   line-height: 1.3;
 }
 
 /* Experience Section */
 .experience {
-  margin: 30px 0; /* Vertical spacing for the entire section */
-  width: 100%; /* Full width within .isi */
-  max-width: 900px; /* Max width for content within experience */
-  height: auto; /* Height based on content */
+  margin: 30px 0;
+  width: 100%;
+  max-width: 900px;
+  height: auto;
   display: flex;
-  flex-direction: column; /* Stack h3, images, text */
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 30px; /* Space between h3, images-container, text-container */
+  gap: 30px;
 
-  /* Section Sub-heading (e.g., "Codes") */
   h3 {
-    margin: 0 0 10px 0; /* Space below heading */
+    margin: 0 0 10px 0;
     text-align: center;
     color: white;
     width: 100%;
@@ -155,20 +149,19 @@ h2 {
   /* Container for code language icons */
   .images-container {
     display: flex;
-    justify-content: center; /* Center icons horizontally */
-    align-items: center; /* Align wrappers vertically */
-    gap: 10px; /* Space between icon WRAPPERS (Desktop) */
-    flex-wrap: wrap; /* Allow icons to wrap to next line */
-    padding: 0 10px; /* Small horizontal padding */
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Gap between wrappers */
+    flex-wrap: wrap;
+    padding: 0 10px;
     width: 100%;
 
-    /* Wrapper for each code image + hover tooltip */
+    /* Wrapper for each code image + JS click tooltip */
     .code-image-wrapper {
-      position: relative; /* Needed for positioning the ::after tooltip */
-      display: inline-flex; /* Display wrappers inline */
-      cursor: default; /* Change cursor if not clickable */
+      position: relative; /* Needed for positioning the tooltip span */
+      display: inline-flex;
+      cursor: pointer; /* Indicate clickable */
 
-      /* Styles applied directly to the image */
       img {
         width: 70px; /* Icon size (Desktop) */
         height: 70px;
@@ -183,69 +176,51 @@ h2 {
         }
       }
 
-      /* --- NEW: CSS Hover Tooltip using ::after --- */
-      &::after {
-        content: attr(data-tooltip); /* Get text from data-tooltip attribute */
+      /* Styling for the JS Code Tooltip */
+      .tooltip-text.code-tooltip {
         position: absolute;
         bottom: -25px; /* Position below the wrapper */
         left: 50%;
         transform: translateX(-50%);
-        background-color: #1a1a1a; /* Style like other tooltips */
+        background-color: #1a1a1a;
         color: white;
         padding: 4px 8px;
         border-radius: 4px;
-        font-size: 0.75em;
-        white-space: nowrap;
+        font-size: 0.75em; /* Base font size for code tooltip */
+        white-space: nowrap; /* <<< Ensure text stays on one line */
+        // text-align: center; /* <<< REMOVED (or commented out) */
+        // max-width: 120px;  /* <<< REMOVED (or commented out) */
         z-index: 5;
-
-        /* Initial hidden state */
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none; /* Prevent tooltip from interfering with hover */
-        transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out; /* Smooth fade */
       }
-
-      /* Show tooltip on wrapper hover */
-      &:hover::after {
-        opacity: 1;
-        visibility: visible;
-      }
-      /* --- End of CSS Hover Tooltip --- */
-
-      /* --- REMOVED: JS Controlled Tooltip Styles --- */
-      // .tooltip-text.code-tooltip { ... }
     }
   }
 
   /* Container for Experience & Abilities text blocks */
   .text-container {
-    display: flex; /* Place text blocks side-by-side (Desktop) */
-    justify-content: space-between; /* Distribute space */
-    align-items: flex-start; /* Align tops of the blocks */
-    width: 100%; /* Full width within .experience */
-    gap: 20px; /* Space between the two text blocks */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    gap: 20px;
     padding: 0;
 
-    /* Individual text blocks */
     .text-experience,
     .text-abilities {
-      flex: 1; /* Allow blocks to share space equally */
-      text-align: left; /* Align text inside block */
-      padding: 15px; /* Internal padding */
-      background-color: #1a1a1a; /* Dark background for blocks */
+      flex: 1;
+      text-align: left;
+      padding: 15px;
+      background-color: #1a1a1a;
       border-radius: 5px;
     }
 
-    /* Slightly smaller font size for abilities list */
     .text-abilities {
       font-size: .95em;
     }
 
-    /* Styling for lists within text blocks */
     ul {
-        padding-left: 20px; /* Standard list indentation */
-        margin-top: 5px; /* Space between h3 and list */
-        margin-bottom: 5px; /* Prevent extra bottom space */
+        padding-left: 20px;
+        margin-top: 5px;
+        margin-bottom: 5px;
     }
   }
 }
@@ -268,7 +243,7 @@ h2 {
   /* Order overridden on mobile */
 
   .icon {
-    position: relative; /* For positioning the JS tooltip */
+    position: relative;
     width: 35px;
     height: 35px;
     cursor: pointer;
@@ -286,7 +261,7 @@ h2 {
       display: block;
     }
 
-    /* --- Tooltip Text (JS Controlled) - Keep these styles --- */
+    /* Tooltip Text (JS Controlled) - Keep these styles */
     .tooltip-text.social-tooltip {
       position: absolute;
       bottom: -35px;
@@ -297,7 +272,7 @@ h2 {
       padding: 5px 10px;
       border-radius: 5px;
       font-size: 0.8em;
-      white-space: nowrap;
+      white-space: nowrap; /* Social links likely don't need wrapping */
       z-index: 11;
     }
   }
@@ -317,7 +292,7 @@ h2 {
       padding: 15px;
   }
 
-  /* --- Position Social Icons Near Top on Mobile --- */
+  /* Position Social Icons Near Top on Mobile */
   .top-right-icons {
       position: static;
       order: 0; /* Social icons first */
@@ -333,11 +308,12 @@ h2 {
           width: 30px;   /* Social icon size */
           height: 30px;
 
-          /* Adjust social tooltip position */
+          /* Adjust social tooltip position/size */
           .tooltip-text.social-tooltip {
              bottom: -32px;
-             font-size: 0.75em;
+             font-size: 0.75em; /* Base mobile size for social tooltip */
              padding: 4px 8px;
+             white-space: nowrap; /* Ensure social tooltips also don't wrap */
           }
       }
   }
@@ -373,8 +349,15 @@ h2 {
             width: 48px;
             height: 48px;
          }
-         /* CSS hover tooltip (:after) generally won't show reliably on mobile touch */
-         /* No specific mobile positioning needed for ::after as it's hover-based */
+         /* --- Adjust code tooltip position/size for mobile --- */
+         .tooltip-text.code-tooltip {
+            bottom: -22px;
+            font-size: 0.65em; /* Adjust font size */
+            padding: 3px 6px;
+            white-space: nowrap; /* <<< Ensure nowrap on mobile too */
+            // text-align: center; /* REMOVED */
+            // max-width: 100px; /* REMOVED */
+         }
        }
     }
 
@@ -416,9 +399,11 @@ h2 {
       .icon {
         width: 28px; /* Smaller social icons */
         height: 28px;
-         /* Adjust social tooltip position */
+         /* Adjust social tooltip position/size */
          .tooltip-text.social-tooltip {
              bottom: -30px;
+             font-size: 0.7em; /* Adjust social tooltip size too if needed */
+             white-space: nowrap; /* Ensure nowrap */
          }
       }
     }
@@ -435,7 +420,15 @@ h2 {
                 width: 42px; /* Code icon size (Small Mobile) */
                 height: 42px;
              }
-             /* No ::after adjustment needed */
+             /* Adjust code tooltip position/size */
+             .tooltip-text.code-tooltip {
+                 bottom: -20px;
+                 font-size: 0.6em; /* Adjust font size */
+                 padding: 2px 5px;
+                 white-space: nowrap; /* <<< Ensure nowrap */
+                 // text-align: center; /* REMOVED */
+                 // max-width: 80px; /* REMOVED */
+             }
            }
         }
         .text-abilities { font-size: 0.85em; }
