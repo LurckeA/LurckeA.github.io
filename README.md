@@ -2,10 +2,13 @@ This is a portfolio for LurckeA / Arialize
 ----
 Petrus Aria Prakoso Widarto
 
+lurckearialize.vercel.app
+
 Contacts:
-Email: ariaprks@gmail.com
-Discord: ariaforehead
-Instagram: @aria.anim
+
+- Email: ariaprks@gmail.com
+- Discord: ariaforehead
+- Instagram: @aria.anim
 
 Worked in build tool Vite, utilizing frameworks such as React and Typescript.
 
