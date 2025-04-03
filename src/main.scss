@@ -402,7 +402,7 @@ h2 {
          /* Adjust social tooltip position/size */
          .tooltip-text.social-tooltip {
              bottom: -30px;
-             font-size: 0.7em; /* Adjust social tooltip size too if needed */
+             font-size: 0.5em; /* Adjust social tooltip size too if needed */
              white-space: nowrap; /* Ensure nowrap */
          }
       }
@@ -423,7 +423,7 @@ h2 {
              /* Adjust code tooltip position/size */
              .tooltip-text.code-tooltip {
                  bottom: -20px;
-                 font-size: 0.6em; /* Adjust font size */
+                 font-size: 0.4em; /* Adjust font size */
                  padding: 2px 5px;
                  white-space: nowrap; /* <<< Ensure nowrap */
                  // text-align: center; /* REMOVED */
