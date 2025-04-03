@@ -54,7 +54,7 @@ body {
   align-items: center; /* Center children horizontally */
   gap: 0.5em; /* Space between direct children (h1, h2) */
   width: 100%; /* Take full width within the container */
-  order: 0; /* Default order in the container's flex layout */
+  order: 0; /* Default order (comes before icons in mobile flow) */
 }
 
 /* Headings */
@@ -134,7 +134,7 @@ h2 {
 
 /* Experience Section */
 .experience {
-  margin: 30px 0; /* Vertical spacing for the entire section */
+  margin: 30px 0; /* Vertical spacing for the entire section (Desktop) */
   width: 100%; /* Full width within .isi */
   max-width: 900px; /* Max width for content within experience */
   height: auto; /* Height based on content */
@@ -225,7 +225,7 @@ h2 {
   display: flex;
   gap: 10px; /* Space between icons (Desktop) */
   z-index: 10; /* Ensure icons are above other content */
-  order: 1; /* Default order (will be overridden on mobile) */
+  /* Order is implicitly 0 or 1 depending on source, overridden on mobile */
 
   .icon {
     position: relative; /* Needed for positioning the tooltip */
@@ -273,85 +273,81 @@ h2 {
 @media (max-width: 768px) {
   body {
      min-height: 100vh; /* Ensure body fills viewport height on mobile */
-                     /* Helps push bottom-positioned elements down if content is short */
   }
 
   .container {
-      padding: 15px; /* Reduce padding on smaller screens */
-      /* display: flex; flex-direction: column; align-items: center; are inherited */
+      padding: 15px; /* Reduce padding */
   }
 
-  /* --- Reposition Icons Near Top on Mobile --- */
+  /* --- Main Content Order & Spacing --- */
+  .isi {
+      order: 0; /* <<< Ensure .isi comes FIRST visually */
+      font-size: 1.3em; /* Adjust font size */
+      margin: 20px 0; /* <<< Restore vertical margin for .isi block */
+                     /* This margin (esp. bottom) helps create space before icons */
+      gap: 0.4em;
+  }
+
+  /* --- Icons Positioned at BOTTOM on Mobile --- */
   .top-right-icons {
-      position: static; /* <<< Remove absolute positioning */
-      order: 0; /* <<< Place icons FIRST in the container's flex order */
-      width: 100%; /* Allow centering */
-      justify-content: center; /* Center the icons horizontally */
-      display: flex; /* Ensure flex properties apply */
-      gap: 20px; /* Space between icons (Mobile) - Adjust as needed */
-      margin-top: 10px;  /* Space from container top */
-      margin-bottom: 25px; /* Space BELOW icons, pushing .isi down */
-      padding: 0;
+      position: static; /* <<< Keep icons in normal document flow */
+      order: 1; /* <<< Place icons visually AFTER .isi */
+      width: 100%;
+      justify-content: center; /* Center the icons */
+      display: flex;
+      gap: 15px; /* Adjust gap between icons */
+      margin-top: 15px;  /* <<< REDUCED margin-top to decrease space above icons */
+      margin-bottom: 20px; /* <<< Margin below icons before page end */
+      padding: 0; /* Remove padding if not needed */
 
       .icon {
-          width: 30px;   /* Icon size (Mobile) - Adjust as needed */
-          height: 30px;
+          width: 28px;   /* <<< Adjust icon size for bottom placement */
+          height: 28px;
 
-          /* Adjust tooltip position for mobile icon size */
+          /* Adjust tooltip position */
           .tooltip-text {
-             bottom: -32px; /* Adjust distance based on icon size */
-             font-size: 0.75em; /* Slightly smaller tooltip text */
+             bottom: -30px; /* Adjust distance based on icon size */
+             font-size: 0.75em;
              padding: 4px 8px;
           }
       }
   }
 
-  /* Main content styles for mobile */
-  .isi {
-      order: 1; /* <<< Place main content AFTER icons */
-      font-size: 1.3em; /* Slightly smaller base font size */
-      margin: 0; /* Remove top margin, space controlled by icons */
-      gap: 0.4em;
-  }
-
   /* Heading adjustments for mobile */
   h1 { font-size: 2.2em; padding: 0.4em; }
-  h1::before { padding: 0.4em; } /* Match padding */
-  h2 { font-size: 1.2em; padding: 0.4em; margin-top: 0.5em; } /* Keep space from h1 */
+  h1::before { padding: 0.4em; }
+  h2 { font-size: 1.2em; padding: 0.4em; margin-top: 0.5em; }
 
   /* Experience section adjustments for mobile */
   .experience {
-    gap: 25px; /* Adjust gap between elements */
-    margin: 25px 0; /* Adjust vertical margin */
-    width: 100%; /* Ensure full width */
+    gap: 25px;
+    margin: 25px 0; /* Keep margin within .isi */
+    width: 100%;
 
-    h3 { font-size: 1.1em; text-align: center; } /* Ensure heading is centered */
+    h3 { font-size: 1.1em; text-align: center; }
 
     /* Code icon adjustments */
     .images-container {
-       gap: 15px; /* Adjust gap */
-       justify-content: center; /* Ensure centering */
-       img {
-           width: 48px; /* Icon size (Mobile) */
-           height: 48px;
-       }
+       gap: 15px;
+       justify-content: center;
+       img { width: 48px; height: 48px; }
     }
 
     /* Text container adjustments - Stack columns */
     .text-container {
-        flex-direction: column; /* <<< Stack text blocks vertically */
-        gap: 15px; /* Space between stacked blocks */
-        align-items: center; /* Center blocks horizontally */
-        width: 100%; /* Ensure full width */
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+        width: 100%;
     }
 
     /* Individual text block adjustments */
     .text-experience,
     .text-abilities {
-        flex: none; /* Remove flex sizing */
-        width: 100%; /* Take full width when stacked */
-        text-align: left; /* Keep text alignment */
-        padding: 12px; /* Adjust padding */
+        flex: none;
+        width: 100%;
+        text-align: left;
+        padding: 12px;
     }
 
     /* Abilities text size */
@@ -369,23 +365,23 @@ h2 {
 @media (max-width: 480px) {
     .container { padding: 10px; } /* Even less padding */
 
-    /* Further adjust top icons */
+    /* Adjust icon section spacing/size */
     .top-right-icons {
-      gap: 15px; /* Adjust gap */
-      margin-top: 5px; /* Adjust top margin */
-      margin-bottom: 20px; /* Adjust bottom margin */
+      gap: 12px; /* Adjust gap */
+      margin-top: 15px; /* <<< Keep top margin relatively small */
+      margin-bottom: 15px; /* Adjust bottom margin */
       .icon {
-        width: 28px; /* Adjust size */
-        height: 28px;
-         /* Adjust tooltip position for smaller icons */
+        width: 26px; /* Adjust size */
+        height: 26px;
+         /* Adjust tooltip position */
          .tooltip-text {
-             bottom: -30px;
+             bottom: -28px;
          }
       }
     }
 
     /* Further adjust main content */
-    .isi { font-size: 1.2em; } /* Adjust base font size */
+    .isi { font-size: 1.2em; margin: 15px 0;} /* Adjust base font size & margin */
     h1 { font-size: 1.8em; } /* Adjust heading sizes */
     h2 { font-size: 1.1em; }
 
