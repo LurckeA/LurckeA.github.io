@@ -7,8 +7,8 @@ lurckearialize.vercel.app
 Contacts:
 
 - Email: ariaprks@gmail.com
-- Discord: ariaforehead
 - Instagram: @aria.anim
+- Discord: ariaforehead
 
 Worked in build tool Vite, utilizing frameworks such as React and Typescript.
 
