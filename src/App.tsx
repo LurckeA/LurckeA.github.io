@@ -64,7 +64,12 @@ export default function App() {
       <div className="isi">
         <h1 className="main-header" data-text='Arialize'>Arialize</h1>
         <h2 className="full-name">Petrus Aria Prakoso Widarto</h2>
-
+        <div className='about'>
+          <h3>About Me</h3>
+          <p>
+            3D animator and programmer. Passionate about 3D animation, programming, web and app development. Strong background in 3D animation and modelling, with experience in programming languages. Love to build, create, and learn.
+          </p>
+        </div>
         <div className="experience">
           <h3>Codes</h3>
           {/* Code Icons (Click Tooltips) */}
