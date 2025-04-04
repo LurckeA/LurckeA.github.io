@@ -26,6 +26,7 @@ export default function App() {
     { title: "ariaprks@gmail.com", src: "https://img.icons8.com/ios-filled/50/F25081/email.png", alt: "Email", className: "email-icon" },
     { title: "@aria.anim", src: "https://img.icons8.com/ios-filled/50/F25081/instagram-new.png", alt: "Instagram", className: "instagram-icon" },
     { title: "ariaforehead", src: "https://img.icons8.com/ios-filled/50/F25081/discord-logo.png", alt: "Discord", className: "discord-icon" },
+    { title: "LurckeA", src: "https://cdn.simpleicons.org/github/white", alt: "GitHub", className: "github-icon" },
   ];
 
   // --- Click Handlers ---
