@@ -40,24 +40,35 @@ export default function App() {
     setActiveSocialTooltip(null);
   };
 
-  // --- REMOVED useEffect for mouse move ---
-
   // --- Component JSX ---
   return (
     <div className="container">
       {/* Social Icons Area */}
       <div className="top-right-icons">
         {socialIcons.map((icon) => (
-          <div
-            key={icon.title}
-            className={`icon ${icon.className}`}
-            onClick={() => handleSocialIconClick(icon.title)}
-          >
-            <img src={icon.src} alt={icon.alt} />
-            {activeSocialTooltip === icon.title && (
-              <span className="tooltip-text social-tooltip">{icon.title}</span>
-            )}
-          </div>
+          <a 
+          key={icon.title}
+          href={icon.className === 'github-icon' ? `https://github.com/${icon.title}` : // Add link for GitHub
+               icon.className === 'email-icon' ? `mailto:${icon.title}` : // Add mailto for Email
+               icon.className === 'instagram-icon' ? `https://instagram.com/${icon.title.substring(1)}` : // Add link for Instagram (remove @)
+               icon.className === 'discord-icon' ? 'https://discord.com/users/10156496535444521977' : // Add link for Discord
+               '#'
+              } // Default link
+          target="_blank" // Open links in new tab
+          rel="noopener noreferrer" // Security best practice for target="_blank"
+          className={`icon ${icon.className}`}
+          onClick={(e) => {
+              // Prevent default link behavior ONLY IF it's not meant to be a direct link (like Discord maybe)
+              handleSocialIconClick(icon.title); // Handle tooltip toggle
+          }}
+          title={icon.title}
+        >
+          <img src={icon.src} alt={icon.alt} />
+          {/* Conditionally render the JS tooltip */}
+          {activeSocialTooltip === icon.title && (
+            <span className="tooltip-text social-tooltip">{icon.title}</span>
+          )}
+        </a>
         ))}
       </div>
 
@@ -110,9 +121,8 @@ export default function App() {
                 <li>3D Animation</li>
                 <li>3D Modelling</li>
                 <li>3D Rigging</li>
-                <li>Programming</li>
-                <li>Web Development</li>
-                <li>Front-end</li>
+                <li>Programming (Python, C, C++, Java)</li>
+                <li>Web Development (React, SCSS)</li>
                 <li>Teamwork</li>
                 <li>Leadership</li>
                 <li>Communication</li>
