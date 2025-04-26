@@ -12,4 +12,4 @@ Contacts:
 
 Worked in build tool Vite, utilizing frameworks such as React and Typescript.
 
-Many thanks to (@1rens1)[https://github.com/1rens1] for teaching me the process in learning React and such.
+Many thanks to [@1rens1](https://github.com/1rens1) for teaching me the process in learning React and such.
