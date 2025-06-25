@@ -18,6 +18,7 @@ Run in the terminal
 
 ```bash
 bun install
+bun add -D sass-embedded
 ```
 
 Many thanks to [@1rens1](https://github.com/1rens1) for teaching me the process in learning React and such.
