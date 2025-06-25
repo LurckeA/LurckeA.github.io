@@ -140,9 +140,8 @@ h2 {
     .code-image-wrapper {
       position: relative; display: inline-flex; cursor: pointer;
       img { width: 70px; height: 70px; object-fit: contain; display: block;
-        filter: grayscale(100%) brightness(0.8) sepia(1) hue-rotate(-50deg) saturate(5);
-        transition: transform 0.3s ease, filter 0.3s ease;
-        &:hover { transform: scale(1.1); filter: grayscale(0%) brightness(1) sepia(1) hue-rotate(-50deg) saturate(5); }
+        transition: transform 0.3s ease;
+        &:hover { transform: scale(1.1); }
       }
       .tooltip-text.code-tooltip {
         position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%);

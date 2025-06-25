@@ -1,20 +1,27 @@
 import React, { useState /*, useEffect removed */ } from 'react'; // Remove useEffect import
 import './main.scss';
 
+// Import images for code tools
+import vscodeImg from './assets/codeTools/vscode.svg';
+import htmlImg from './assets/codeTools/html.svg';
+import pythonImg from './assets/codeTools/python.svg';
+import cImg from './assets/codeTools/c.svg';
+import cppImg from './assets/codeTools/cpp.svg';
+import javascriptImg from './assets/codeTools/javascript.svg';
+import kaliLinuxImg from './assets/codeTools/kali.svg';
+import ubuntuImg from './assets/codeTools/ubuntu.svg';
+
 export default function App() {
   // --- Data for Code Icons ---
   const codeTools = [
-    { name: "Visual Studio Code", src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/512px-Visual_Studio_Code_1.35_icon.svg.png?20210804221519', alt: 'Visual Studio Code Logo'},
-    { name: "HTML", src: 'https://icons.iconarchive.com/icons/cornmanthe3rd/plex/512/Other-html-5-icon.png', alt: 'HTML5 Logo'},
-    { name: "Python", src: 'https://cdn3.iconfinder.com/data/icons/logos-and-brands-adobe/512/267_Python-512.png', alt: 'Python Logo'},
-    { name: "C", src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/C_Programming_Language.svg/1200px-C_Programming_Language.svg.png', alt: 'C Language Logo'},
-    { name: "C++", src: 'https://cdn-icons-png.flaticon.com/512/6132/6132222.png', alt: 'C++ Language Logo'},
-    { name: "Java", src: 'https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/181_Java_logo_logos-512.png', alt: 'Java Logo'},
-    { name: "JavaScript", src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSw4fkV1SpW6hK6fS7Ig7FAk6_y2ADAawey9Q&s', alt: 'JavaScript Logo'},
-    { name: "Arduino", src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyxt3aihtIX0TuNK0fOlV4f1Bga5T9D3SWYg&s', alt: 'Arduino Logo'},
-    { name: "Linux OS", src: 'https://www.pngplay.com/wp-content/uploads/12/Linux-Transparent-Image.png', alt: 'Linux Logo (Tux)'},
-    { name: "Kali Linux", src: 'https://img.icons8.com/carbon_copy/600/F25081/kali-linux.png', alt: 'Kali Linux Logo'},
-    { name: "Ubuntu", src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/UbuntuCoF.svg/1024px-UbuntuCoF.svg.png', alt: 'Ubuntu Logo'},
+    { name: "Visual Studio Code", src: vscodeImg, alt: 'Visual Studio Code Logo'},
+    { name: "HTML", src: htmlImg, alt: 'HTML5 Logo'},
+    { name: "Python", src: pythonImg, alt: 'Python Logo'},
+    { name: "C", src: cImg, alt: 'C Language Logo'},
+    { name: "C++", src: cppImg, alt: 'C++ Language Logo'},
+    { name: "JavaScript", src: javascriptImg, alt: 'JavaScript Logo'},
+    { name: "Kali Linux", src: kaliLinuxImg, alt: 'Kali Linux Logo'},
+    { name: "Ubuntu", src: ubuntuImg, alt: 'Ubuntu Logo'},
   ];
 
   // --- State Management ---
