@@ -48,8 +48,6 @@ body {
 }
 
 .container {
-  opacity: 1;
-  transition: none;
   width: 100%;
   max-width: 1200px;
   padding: 20px;
@@ -152,17 +150,6 @@ h2 {
         font-size: 0.75em; white-space: nowrap; z-index: 5;
       }
     }
-  }
-
-  /* Text Columns Container */
-  .text-container {
-    display: flex; justify-content: space-between; align-items: flex-start; width: 100%;
-    gap: 25px; background-color: rgba(26, 26, 26, 0.8); border-radius: 5px; padding: 20px;
-    .text-experience, .text-abilities {
-      flex: 1; text-align: left; padding: 0; background-color: transparent; border-radius: 0;
-      h3 { font-size: 1em; text-align: left; margin-bottom: 8px; color: white; }
-    }
-    ul { padding-left: 20px; margin: 0; font-size: 0.75em; line-height: 1.6; color: #cccccc; }
   }
 }
 
@@ -273,11 +260,6 @@ h2 {
          .tooltip-text.code-tooltip { bottom: -22px; font-size: 0.65em; padding: 3px 6px; white-space: nowrap; }
        }
     }
-    .text-container {
-        flex-direction: column; gap: 15px; align-items: center;
-        width: 100%; padding: 15px; margin: 0 5px; max-width: 95%;
-    }
-    .text-experience, .text-abilities { width: 100%; padding: 0; h3 { font-size: 0.9em; } ul { font-size: 0.7em; line-height: 1.5; } }
   }
 }
 
@@ -308,7 +290,5 @@ h2 {
              .tooltip-text.code-tooltip { bottom: -20px; font-size: 0.4em; padding: 2px 5px; white-space: nowrap; }
            }
         }
-         .text-container { padding: 12px; gap: 12px; margin: 0; max-width: 100%; }
-         .text-experience, .text-abilities { padding: 0; h3 { font-size: 0.8em; } ul { font-size: 0.65em; } }
     }
 }

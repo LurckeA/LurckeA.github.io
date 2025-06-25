@@ -79,7 +79,8 @@ export default function App() {
         <div className='about'>
           <h3>About Me</h3>
           <p>
-            3D animator and programmer. Passionate about 3D animation, programming, web and app development. Strong background in 3D animation and modelling, with experience in programming languages. Love to build, create, and learn.
+            Ex 3D animator/modeller. <br />
+            Currently a web developer, programmer, and trusted warranty voider. <br />
           </p>
         </div>
         <div className="experience">
@@ -98,41 +99,6 @@ export default function App() {
                 )}
               </div>
             ))}
-          </div>
-
-          {/* Text Sections */}
-          <div className="text-container">
-            {/* ... Experience List ... */}
-            <div className="text-experience">
-              <h3>Experiences</h3>
-              <ul>
-                <li>8 years in choir</li>
-                <li>4 years in 3D animation</li>
-                <li>3 years in 3D modelling and 3D rigging</li>
-                <li>1 year in programming</li>
-                <li>1 year in web development</li>
-                <li>1 year as student council member</li>
-              </ul>
-            </div>
-            {/* ... Abilities List ... */}
-            <div className="text-abilities">
-              <h3>Abilities</h3>
-              <ul>
-                <li>3D Animation</li>
-                <li>3D Modelling</li>
-                <li>3D Rigging</li>
-                <li>Programming (Python, C, C++, Java)</li>
-                <li>Web Development (React, SCSS)</li>
-                <li>Teamwork</li>
-                <li>Leadership</li>
-                <li>Communication</li>
-                <li>Problem Solving</li>
-                <li>Time Management</li>
-                <li>Adaptability</li>
-                <li>Language (English, Javanese, Japanese)</li>
-                <li>Music (Vocal)</li>
-              </ul>
-            </div>
           </div>
         </div>
       </div>
