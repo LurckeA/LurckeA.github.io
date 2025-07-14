@@ -1,13 +1,13 @@
-import React, { useState /*, useEffect removed */ } from 'react'; // Remove useEffect import
 import './main.scss';
 
 // Import images for code tools
 import vscodeImg from './assets/codeTools/vscode.svg';
-import htmlImg from './assets/codeTools/html.svg';
 import pythonImg from './assets/codeTools/python.svg';
 import cImg from './assets/codeTools/c.svg';
 import cppImg from './assets/codeTools/cpp.svg';
+import sassImg from './assets/codeTools/sass.svg';
 import javascriptImg from './assets/codeTools/javascript.svg';
+import reactImg from './assets/codeTools/react.svg';
 import kaliLinuxImg from './assets/codeTools/kali.svg';
 import ubuntuImg from './assets/codeTools/ubuntu.svg';
 
@@ -15,11 +15,12 @@ export default function App() {
   // --- Data for Code Icons ---
   const codeTools = [
     { name: "Visual Studio Code", src: vscodeImg, alt: 'Visual Studio Code Logo'},
-    { name: "HTML", src: htmlImg, alt: 'HTML5 Logo'},
     { name: "Python", src: pythonImg, alt: 'Python Logo'},
     { name: "C", src: cImg, alt: 'C Language Logo'},
     { name: "C++", src: cppImg, alt: 'C++ Language Logo'},
+    { name: "Sass", src: sassImg, alt: 'Sass Logo'},
     { name: "JavaScript", src: javascriptImg, alt: 'JavaScript Logo'},
+    { name: "React", src: reactImg, alt: 'React Logo'},
     { name: "Kali Linux", src: kaliLinuxImg, alt: 'Kali Linux Logo'},
     { name: "Ubuntu", src: ubuntuImg, alt: 'Ubuntu Logo'},
   ];
@@ -87,7 +88,7 @@ export default function App() {
           <h3>About Me</h3>
           <p>
             Ex 3D animator/modeller. <br />
-            Currently a web developer, programmer, and trusted warranty voider. <br />
+            Currently a web developer, programmer, vocalist, and trusted warranty voider. <br />
           </p>
         </div>
         <div className="experience">
